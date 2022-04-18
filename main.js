@@ -7,7 +7,6 @@ const form = document.querySelector('#signup');
 
 
 const checkUsername = () => {
-
     let valid = false;
 
     const min = 3,
@@ -29,7 +28,9 @@ const checkUsername = () => {
 
 const checkEmail = () => {
     let valid = false;
+
     const email = emailEl.value.trim();
+    
     if (!isRequired(email)) {
         showError(emailEl, 'Email cannot be blank.');
     } else if (!isEmailValid(email)) {
@@ -43,7 +44,6 @@ const checkEmail = () => {
 
 const checkPassword = () => {
     let valid = false;
-
 
     const password = passwordEl.value.trim();
 
@@ -61,7 +61,7 @@ const checkPassword = () => {
 
 const checkConfirmPassword = () => {
     let valid = false;
-    // check confirm password
+    
     const confirmPassword = confirmPasswordEl.value.trim();
     const password = passwordEl.value.trim();
 
@@ -92,36 +92,29 @@ const isBetween = (length, min, max) => length < min || length > max ? false : t
 
 
 const showError = (input, message) => {
-    // get the form-field element
     const formField = input.parentElement;
-    // add the error class
+    
     formField.classList.remove('success');
     formField.classList.add('error');
 
-    // show the error message
     const error = formField.querySelector('small');
     error.textContent = message;
 };
 
 const showSuccess = (input) => {
-    // get the form-field element
     const formField = input.parentElement;
 
-    // remove the error class
     formField.classList.remove('error');
     formField.classList.add('success');
 
-    // hide the error message
     const error = formField.querySelector('small');
     error.textContent = '';
 }
 
 
 form.addEventListener('submit', function (e) {
-    // prevent the form from submitting
     e.preventDefault();
 
-    // validate fields
     let isUsernameValid = checkUsername(),
         isEmailValid = checkEmail(),
         isPasswordValid = checkPassword(),
@@ -132,7 +125,6 @@ form.addEventListener('submit', function (e) {
         isPasswordValid &&
         isConfirmPasswordValid;
 
-    // submit to the server if the form is valid
     if (isFormValid) {
 
     }
