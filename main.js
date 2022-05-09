@@ -110,6 +110,22 @@ const checkConfirmPassword = () => {
     return valid;
 };
 
+const getUserDetails = () => {
+    const row = 1;
+    const userName = document.getElementById('username').value;
+    const UserEmail = document.getElementById('email').value;
+
+    const display = document.getElementById('UserDetailstable');
+    const newRow = display.insertRow(row);
+
+    var cellOne = newRow.insertCell(0);
+    var cellTwo = newRow.insertCell(1);
+
+    cellOne.innerHTML = userName;
+    cellTwo.innerHTML = UserEmail;
+
+    row++;
+};
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -127,4 +143,8 @@ form.addEventListener('submit', function (e) {
     if (isFormValid) {
 
     }
+
+    getUserDetails();
 });
+
+
